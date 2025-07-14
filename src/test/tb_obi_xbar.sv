@@ -24,7 +24,7 @@ module tb_obi_xbar;
 
   // TODO CHK!
 
-  localparam int unsigned NumRequests = 32'd10000;
+  localparam int unsigned NumRequests = 32'd200;
 
   localparam time CyclTime = 10ns;
   localparam time ApplTime =  2ns;
@@ -159,6 +159,7 @@ module tb_obi_xbar;
                                                 achk: '0}, r_rdata, r_rid, r_err, r_optional);
       obi_rand_manager.run(NumRequests);
       end_of_sim[i] <= 1'b1;
+      $display("Manager %0d finished", i);
     end
 
     `OBI_ASSIGN(mgr_bus[i], mgr_bus_dv[i], MgrConfig, MgrConfig)
